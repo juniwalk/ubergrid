@@ -16,7 +16,7 @@ class Paginator extends \Nette\Application\UI\Control
 	public $page = 1;
 
 	/** @var int */
-	private $pages = 3;
+	public $pages;
 
 
 	/**
@@ -24,13 +24,19 @@ class Paginator extends \Nette\Application\UI\Control
 	 */
 	public function handlePage($page)
 	{
+		$perPage = $this->getParent()->getComponent('perPage');
+		$table = $this->getParent()->getComponent('table');
+
+		$this->pages = ceil(sizeof($table->data) / $perPage->perPage);
+
+
 		$this->page = min(max($page, 1), $this->pages);
 
 		if (!$this->getPresenter()->isAjax()) {
 			$this->redirect('this');
 		}
 
-		// DOES WORK - whole grid is redrawn
+		$this->getParent()['table']->redrawControl();
 		$this->redrawControl();
 	}
 

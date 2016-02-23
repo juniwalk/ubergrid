@@ -32,9 +32,12 @@ class PerPage extends \Nette\Application\UI\Control
 			$this->redirect('this');
 		}
 
-		// DOES NOT WORK - snippets wont be sent over
-		$this->redrawControl('perPage');
-		$this->redrawControl('data');
+		// Reset the page when the number of perpage items is changed
+		$this->getParent()['paginator']->page = 1;
+
+		$this->getParent()['paginator']->redrawControl();
+		$this->getParent()['table']->redrawControl();
+		$this->redrawControl();
 	}
 
 
