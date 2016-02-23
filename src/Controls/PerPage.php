@@ -28,6 +28,15 @@ class PerPage extends \Nette\Application\UI\Control
 			$this->perPage = $perPage;
 		}
 
+		$paginator = $this->getParent()->getComponent('paginator');
+		$table = $this->getParent()->getComponent('table');
+
+		$paginator->pages = 0;
+
+		if ($perPage) {
+			$paginator->pages = ceil(sizeof($table->data) / $perPage);
+		}
+
 		if (!$this->getPresenter()->isAjax()) {
 			$this->redirect('this');
 		}
