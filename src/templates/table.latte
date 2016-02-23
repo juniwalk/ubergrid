@@ -1,0 +1,20 @@
+<table class="table table-striped" n:snippet="table">
+<thead n:snippet="head">
+	<tr>
+		<th>#</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Username</th>
+	</tr>
+</thead>
+<tbody n:snippet="data">
+{foreach $data as $row}
+	<tr>
+		<th scope="row">{$row['id']}</th>
+		<td>{$row['firstName']}</td>
+		<td>{$row['lastName']}</td>
+		<td>@{$row['username']}</td>
+	</tr>
+{/foreach}
+</tbody>
+</table>

@@ -1,0 +1,19 @@
+<nav n:snippet="paginator" class="pull-left">
+
+	<ul class="pagination no-margin">
+		<li>
+			<a n:href="page! $page -1" class="ajax" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</li>
+{for $i = 1; $i <= $pages; $i++}
+		<li n:class="$i == $page ? active"><a n:href="page! $i" class="ajax">{$i}</a></li>
+{/for}
+		<li>
+			<a n:href="page! $page +1" class="ajax" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+	</ul>
+
+</nav>
