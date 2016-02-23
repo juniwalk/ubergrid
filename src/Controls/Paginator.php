@@ -16,7 +16,7 @@ class Paginator extends \Nette\Application\UI\Control
 	public $page = 1;
 
 	/** @var int */
-	public $pages;
+	public $pages = 0;
 
 
 	/**
@@ -27,8 +27,11 @@ class Paginator extends \Nette\Application\UI\Control
 		$perPage = $this->getParent()->getComponent('perPage');
 		$table = $this->getParent()->getComponent('table');
 
-		$this->pages = ceil(sizeof($table->data) / $perPage->perPage);
+		$this->pages = 0;
 
+		if ($perPage->perPage) {
+			$this->pages = ceil(sizeof($table->data) / $perPage->perPage);
+		}
 
 		$this->page = min(max($page, 1), $this->pages);
 

@@ -30,6 +30,10 @@ class Table extends \Nette\Application\UI\Control
 		$paginator = $this->getParent()->getComponent('paginator');
 		$perPage = $this->getParent()->getComponent('perPage');
 
+		if (!$perPage->perPage) {
+			return $this->data;
+		}
+
 		$offset = ($paginator->page - 1) * $perPage->perPage;
 		$paginator->pages = ceil(sizeof($this->data) / $perPage->perPage);
 

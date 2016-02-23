@@ -1,6 +1,6 @@
 <nav n:snippet="paginator" class="pull-left">
 
-	<ul class="pagination no-margin">
+	<ul class="pagination no-margin" n:if="$pages > 0">
 		<li>
 			<a n:href="page! $page -1" class="ajax" aria-label="Previous">
 				<span aria-hidden="true">&laquo;</span>
