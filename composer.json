@@ -1,0 +1,39 @@
+{
+	"name": "juniwalk/ubergrid",
+	"description": "",
+	"type": "library",
+	"keywords": ["nette","nettefw","grd", "datagrid"],
+	"license": "MIT",
+
+	"authors": [{
+		"name": "Martin Procházka",
+		"email": "juniwalk@outlook.cz",
+		"role": "Developer"
+	}],
+
+	"support": {
+		"issues": "https://github.com/juniwalk/ubergrid/issues"
+	},
+
+
+	"autoload": {
+		"psr-4": {"JuniWalk\\UberGrid\\": "src/"}
+	},
+
+	"require": {
+		"php": ">=5.5",
+		"nette/application": "~2.0",
+		"nette/forms": "~2.0",
+		"nette/di": "~2.0"
+	},
+
+
+	"autoload-dev": {
+		"psr-4": {"JuniWalk\\UberGrid\\Tests\\": "tests/"}
+	},
+
+	"require-dev": {
+		"nette/tester": "~1.0",
+		"latte/latte": "~2.0"
+	}
+}

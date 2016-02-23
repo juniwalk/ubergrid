@@ -1,8 +1,16 @@
 <?php
 
-namespace App\Controls;
+/**
+ * @author    Martin Procházka <juniwalk@outlook.cz>
+ * @package   Übergrid
+ * @link      https://github.com/juniwalk/ubergrid
+ * @copyright Martin Procházka (c) 2015
+ * @license   MIT License
+ */
 
-final class UberGrid extends \Nette\Application\UI\Control
+namespace JuniWalk\UberGrid;
+
+class Grid extends \Nette\Application\UI\Control
 {
 	/** @var int @persistent */
 	public $page = 1;
@@ -89,6 +97,7 @@ final class UberGrid extends \Nette\Application\UI\Control
 		$template->render();
 	}
 
+
 	public function renderTable()
 	{
 		$template = $this->createTemplate();
@@ -96,6 +105,7 @@ final class UberGrid extends \Nette\Application\UI\Control
 		$template->add('data', $this->getData());
 		$template->render();
 	}
+
 
 	public function renderPerPage()
 	{
@@ -105,6 +115,7 @@ final class UberGrid extends \Nette\Application\UI\Control
 		$template->add('perPage', $this->perPage);
 		$template->render();
 	}
+
 
 	public function renderPaginator()
 	{
@@ -116,7 +127,7 @@ final class UberGrid extends \Nette\Application\UI\Control
 	}
 }
 
-interface IUberGridFactory
+interface Grid
 {
 	/**
 	 * @return UberGrid
