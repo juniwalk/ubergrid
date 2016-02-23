@@ -8,7 +8,7 @@
  * @license   MIT License
  */
 
-namespace JuniWalk\UberGrid;
+namespace JuniWalk\Ubergrid;
 
 class Grid extends \Nette\Application\UI\Control
 {
@@ -127,10 +127,10 @@ class Grid extends \Nette\Application\UI\Control
 	}
 }
 
-interface Grid
+interface IGridFactory
 {
 	/**
-	 * @return UberGrid
+	 * @return Grid
 	 */
 	public function create();
 }

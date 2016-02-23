@@ -17,7 +17,7 @@
 
 
 	"autoload": {
-		"psr-4": {"JuniWalk\\UberGrid\\": "src/"}
+		"psr-4": {"JuniWalk\\Ubergrid\\": "src/"}
 	},
 
 	"require": {
@@ -29,7 +29,7 @@
 
 
 	"autoload-dev": {
-		"psr-4": {"JuniWalk\\UberGrid\\Tests\\": "tests/"}
+		"psr-4": {"JuniWalk\\Ubergrid\\Tests\\": "tests/"}
 	},
 
 	"require-dev": {
