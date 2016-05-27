@@ -28,7 +28,10 @@ class Grid extends \Nette\Application\UI\Control
 	 */
 	protected function createComponentTable($name)
 	{
-		return new Components\Table;
+		$table = new Components\Table($this, $name);
+		$table->setData(json_decode(file_get_contents(__DIR__.'/data.json')));
+
+		return $table;
 	}
 
 
@@ -38,7 +41,7 @@ class Grid extends \Nette\Application\UI\Control
 	 */
 	protected function createComponentPaginator($name)
 	{
-		return new Components\Paginator;
+		return new Components\Paginator($this, $name);
 	}
 
 
@@ -48,7 +51,7 @@ class Grid extends \Nette\Application\UI\Control
 	 */
 	protected function createComponentPerPage($name)
 	{
-		return new Components\PerPage;
+		return new Components\PerPage($this, $name);
 	}
 }
 

@@ -13,12 +13,15 @@ namespace JuniWalk\Ubergrid\Components;
 class Table extends \Nette\Application\UI\Control
 {
 	/** @var stdClass[] */
-	public $data;
+	private $data;
 
 
-	public function __construct()
+	/**
+	 * @param mixed  $data
+	 */
+	public function setData($data)
 	{
-		$this->data = json_decode(file_get_contents(__DIR__.'/../data.json'));
+		$this->data = $data;
 	}
 
 
@@ -38,6 +41,15 @@ class Table extends \Nette\Application\UI\Control
 		$paginator->pages = ceil(sizeof($this->data) / $perPage->perPage);
 
 		return array_slice($this->data, $offset, $perPage->perPage);
+	}
+
+
+	/**
+	 * @return int
+	 */
+	public function getCount()
+	{
+		return sizeof($this->data);
 	}
 
 

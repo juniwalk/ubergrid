@@ -34,7 +34,7 @@ class PerPage extends \Nette\Application\UI\Control
 		$paginator->pages = 0;
 
 		if ($perPage) {
-			$paginator->pages = ceil(sizeof($table->data) / $perPage);
+			$paginator->pages = ceil($table->getCount() / $perPage);
 		}
 
 		if (!$this->getPresenter()->isAjax()) {

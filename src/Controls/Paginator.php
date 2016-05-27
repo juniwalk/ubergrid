@@ -30,7 +30,7 @@ class Paginator extends \Nette\Application\UI\Control
 		$this->pages = 0;
 
 		if ($perPage->perPage) {
-			$this->pages = ceil(sizeof($table->data) / $perPage->perPage);
+			$this->pages = ceil($table->getCount() / $perPage->perPage);
 		}
 
 		$this->page = min(max($page, 1), $this->pages);
