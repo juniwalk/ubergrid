@@ -1,4 +1,4 @@
-<div class="panel panel-default" n:snippet="datagrid">
+<div class="panel panel-default">
 
 	<div class="panel-heading">
 		<h3 class="panel-title">Übergrid</h3>
@@ -8,11 +8,17 @@
 		Possible place for filter
 	</div>
 
+{snippet table}
 	{control table}
+{/snippet}
 
 	<div class="panel-footer clearfix">
-		{control paginator}
-		{control perPage}
+		<nav class="pull-left" n:snippet="paginator">
+			{control paginator}
+		</nav>
+		<nav class="pull-right" n:snippet="perPage">
+			{control perPage}
+		</nav>
 	</div>
 
 </div>

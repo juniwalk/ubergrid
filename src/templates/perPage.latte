@@ -1,9 +1,5 @@
-<nav n:snippet="perPage" class="pull-right">
-
-	<ul class="pagination no-margin">
+<ul class="pagination no-margin">
 {foreach $perPages as $i}
-		<li n:class="$i == $perPage ? active"><a n:href="perPage! $i" class="ajax">{$i ?: 'Vše'}</a></li>
+	<li n:class="$i == $perPage ? active"><a n:href="perPage! $i" n:tag-if="$i <> $perPage" class="ajax"><span>{$i ?: 'Vše'}</span></a></li>
 {/foreach}
-	</ul>
-
-</nav>
+</ul>

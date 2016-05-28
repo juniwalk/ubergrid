@@ -30,17 +30,18 @@ class Table extends \Nette\Application\UI\Control
 	 */
 	public function getData()
 	{
-		$paginator = $this->getParent()->getComponent('paginator');
-		$perPage = $this->getParent()->getComponent('perPage');
+		$datagrid = $this->getParent();
+		$paginator = $datagrid->getComponent('paginator');
+		$perPage = $datagrid->getComponent('perPage');
 
-		if (!$perPage->perPage) {
+		if (!$perPage = $perPage->getPerPage()) {
 			return $this->data;
 		}
 
-		$offset = ($paginator->page - 1) * $perPage->perPage;
-		$paginator->pages = ceil(sizeof($this->data) / $perPage->perPage);
+		$offset = ($paginator->getPage() - 1) * $perPage;
+		$paginator->pages = ceil(sizeof($this->data) / $perPage);
 
-		return array_slice($this->data, $offset, $perPage->perPage);
+		return array_slice($this->data, $offset, $perPage);
 	}
 
 

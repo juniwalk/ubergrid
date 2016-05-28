@@ -12,8 +12,6 @@ namespace JuniWalk\Ubergrid;
 
 class Grid extends \Nette\Application\UI\Control
 {
-
-
 	public function render()
 	{
 		$template = $this->createTemplate();

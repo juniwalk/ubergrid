@@ -16,7 +16,7 @@ class Paginator extends \Nette\Application\UI\Control
 	public $page = 1;
 
 	/** @var int */
-	public $pages = 0;
+	private $pages = 0;
 
 
 	/**
@@ -24,13 +24,14 @@ class Paginator extends \Nette\Application\UI\Control
 	 */
 	public function handlePage($page)
 	{
-		$perPage = $this->getParent()->getComponent('perPage');
-		$table = $this->getParent()->getComponent('table');
+		$datagrid = $this->getParent();
+		$perPage = $datagrid->getComponent('perPage');
+		$table = $datagrid->getComponent('table');
 
 		$this->pages = 0;
 
-		if ($perPage->perPage) {
-			$this->pages = ceil($table->getCount() / $perPage->perPage);
+		if ($perPage = $perPage->getPerPage()) {
+			$this->pages = ceil($table->getCount() / $perPage);
 		}
 
 		$this->page = min(max($page, 1), $this->pages);
@@ -39,8 +40,44 @@ class Paginator extends \Nette\Application\UI\Control
 			$this->redirect('this');
 		}
 
-		$this->getParent()['table']->redrawControl();
-		$this->redrawControl();
+		$datagrid->redrawControl('paginator');
+		$datagrid->redrawControl('table');
+	}
+
+
+	/**
+	 * @param int  $page
+	 */
+	public function setPage($page)
+	{
+		$this->page = $page;
+	}
+
+
+	/**
+	 * @return int
+	 */
+	public function getPage()
+	{
+		return $this->page;
+	}
+
+
+	/**
+	 * @param int  $pages
+	 */
+	public function setPages($pages)
+	{
+		$this->pages = $pages;
+	}
+
+
+	/**
+	 * @return int
+	 */
+	public function getPages()
+	{
+		return $this->pages;
 	}
 
 

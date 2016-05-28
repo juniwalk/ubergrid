@@ -24,29 +24,51 @@ class PerPage extends \Nette\Application\UI\Control
 	 */
 	public function handlePerPage($perPage)
 	{
+		$datagrid = $this->getParent();
+		$paginator = $datagrid->getComponent('paginator');
+
 		if (in_array($perPage, $this->perPages)) {
 			$this->perPage = $perPage;
+			$paginator->handlePage(1);
 		}
 
-		$paginator = $this->getParent()->getComponent('paginator');
-		$table = $this->getParent()->getComponent('table');
+		$datagrid->redrawControl('perPage');
+	}
 
-		$paginator->pages = 0;
 
-		if ($perPage) {
-			$paginator->pages = ceil($table->getCount() / $perPage);
-		}
+	/**
+	 * @param int  $perPage
+	 */
+	public function setPerPage($perPage)
+	{
+		$this->perPage = $perPage;
+	}
 
-		if (!$this->getPresenter()->isAjax()) {
-			$this->redirect('this');
-		}
 
-		// Reset the page when the number of perpage items is changed
-		$this->getParent()['paginator']->page = 1;
+	/**
+	 * @return int
+	 */
+	public function getPerPage()
+	{
+		return $this->perPage;
+	}
 
-		$this->getParent()['paginator']->redrawControl();
-		$this->getParent()['table']->redrawControl();
-		$this->redrawControl();
+
+	/**
+	 * @param int[]  $perPages
+	 */
+	public function setPerPages(array $perPages)
+	{
+		$this->perPages = $perPages;
+	}
+
+
+	/**
+	 * @return int[]
+	 */
+	public function getPerPages()
+	{
+		return $this->perPages;
 	}
 
 
