@@ -52,11 +52,3 @@ class Grid extends \Nette\Application\UI\Control
 		return new Components\PerPage($this, $name);
 	}
 }
-
-interface IGridFactory
-{
-	/**
-	 * @return Grid
-	 */
-	public function create();
-}
