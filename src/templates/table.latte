@@ -1,22 +1,18 @@
 <table class="table table-striped table-hover">
-<thead>
-	<tr>
-		<th>#</th>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>E-Mail</th>
-		<th>Company</th>
-	</tr>
-</thead>
-<tbody>
-{foreach $data as $row}
-	<tr>
-		<th scope="row">{$row->id}</th>
-		<td>{$row->firstName}</td>
-		<td>{$row->lastName}</td>
-		<td>{$row->email}</td>
-		<td>{$row->company}</td>
-	</tr>
-{/foreach}
-</tbody>
+	<thead>
+		<tr n:inner-foreach="$columns as $column">
+			{$column->createHeader()}
+		</tr>
+	</thead>
+	<tbody n:snippet="tbody">
+
+	{snippetArea items}
+	{foreach $items as $item}
+		<tr data-id="{$item->getId()}" n:snippet="item-{$item->getId()}" n:inner-foreach="$columns as $column">
+			{$item->render($column)}
+		</tr>
+	{/foreach}
+	{/snippetArea}
+
+	</tbody>
 </table>

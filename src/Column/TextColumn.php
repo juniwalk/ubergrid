@@ -8,12 +8,8 @@
  * @license   MIT License
  */
 
-namespace JuniWalk\Ubergrid;
+namespace JuniWalk\Ubergrid\Column;
 
-interface IGridFactory
+final class TextColumn extends AbstractColumn implements Column
 {
-	/**
-	 * @return Grid
-	 */
-	public function create();
 }

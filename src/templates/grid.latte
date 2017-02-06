@@ -1,23 +1,67 @@
 <div class="panel panel-default">
 
-	<div class="panel-heading">
-		<h3 class="panel-title">Übergrid</h3>
+	<div class="panel-heading clearfix">
+
+		<h3 class="panel-title pull-left">Übergrid</h3>
+
+		<div class="panel-tools btn-toolbar pull-right">
+
+			<div class="btn-group">
+				<a href="" class="btn btn-xs btn-default"><i class="fa fa-bookmark"></i> Button</a>
+				<a href="" class="btn btn-xs btn-default"><i class="fa fa-bomb"></i> Button</a>
+			</div>
+
+			<div class="btn-group">
+				<a href="" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Button</a>
+			</div>
+
+			<div class="btn-group">
+				<a href="#filters" class="btn btn-xs btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="filters"><i class="fa fa-filter"></i> Filters</a>
+			</div>
+
+		</div>
+
 	</div>
 
-	<div class="panel-body">
-		Possible place for filter
+	<div class="panel-body collapse" id="filters" style="padding: 0px;">
+	<div style="padding: 15px;" n:snippet="outerFilter">
+
+		{form outerFilter class => 'form-horizontal row'}
+
+			<div class="col-sm-6">
+
+				<div class="form-group">
+					<label n:name="column" class="col-sm-2 control-label">Column</label>
+					<div class="col-sm-10">
+						<input type="text" n:name="column" class="form-control">
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-sm-6">
+
+				<button type="submit" n:name="submit" class="btn btn-primary btn-sm">
+					<i class="fa fa-send"> Odeslat</i>
+				</button>
+
+			</div>
+
+		{/form}
+
+	</div>
 	</div>
 
-{snippet table}
-	{control table}
-{/snippet}
+	<div class="table-responsive" n:snippet="table">
+		{control table}
+	</div>
 
 	<div class="panel-footer clearfix">
 		<nav class="pull-left" n:snippet="paginator">
-			{control paginator}
+			{control paginator:pages}
 		</nav>
 		<nav class="pull-right" n:snippet="perPage">
-			{control perPage}
+			{control paginator:perPage}
 		</nav>
 	</div>
 

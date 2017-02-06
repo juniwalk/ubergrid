@@ -1,5 +1,5 @@
-<ul class="pagination no-margin">
-{foreach $perPages as $i}
-	<li n:class="$i == $perPage ? active"><a n:href="perPage! $i" n:tag-if="$i <> $perPage" class="ajax"><span>{$i ?: 'Vše'}</span></a></li>
-{/foreach}
+<ul class="pagination no-margin" n:inner-foreach="$perPages as $i">
+	<li n:class="$i == $perPage ? active">
+		<a n:href="perPage! $i" n:tag-if="$i <> $perPage" class="ajax"><span>{$i ?: 'Vše'}</span></a>
+	</li>
 </ul>
